@@ -19,19 +19,5 @@ export default class PontosService
 
             return response.data;
         });
-    }
-
-    logout() 
-    {
-        localStorage.removeItem("user");
-    }
-
-    register (username, email, password) 
-    {
-        return axios.post(API_URL + "signup", {
-            username,
-            email,
-            password
-        });
-    }
+    }    
 }
