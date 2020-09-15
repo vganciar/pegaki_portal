@@ -1,9 +1,18 @@
 import React, { Component } from "react";
-import TutorialDataService from "../services/pontos.service";
+import PontosService from "../services/pontos.service";
+import { Link } from "react-router-dom";
 
 export default class Pontos extends Component {
     constructor(props) {
         super(props);
+
+        this.retrievePoints = this.retrievePoints.bind(this);
+        this.refreshList = this.refreshList.bind(this);
+
+        this.state = {
+            cep,
+            points: []
+        }
         
         //this.onChangeTitle = this.onChangeTitle.bind(this);
         //this.onChangeDescription = this.onChangeDescription.bind(this);
@@ -18,55 +27,31 @@ export default class Pontos extends Component {
 
         //     submitted: false
         // };
-  }
+    }
 
-//   onChangeTitle(e) {
-//     this.setState({
-//       title: e.target.value
-//     });
-//   }
+    componentDidMount() {
+        this.retrievePoints();
+    }
 
-//   onChangeDescription(e) {
-//     this.setState({
-//       description: e.target.value
-//     });
-//   }
+    retrievePoints() {
+        PontosService.get(this.state.cep)
+        .then(response => {
+            this.setState({
+                points: response.data.results
+            });
+        
+            console.log(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    }
 
-//   saveTutorial() {
-//     var data = {
-//       title: this.state.title,
-//       description: this.state.description
-//     };
+    refreshList() {
+        this.retrievePoints();
+    }
 
-//     TutorialDataService.create(data)
-//       .then(response => {
-//         this.setState({
-//           id: response.data.id,
-//           title: response.data.title,
-//           description: response.data.description,
-//           published: response.data.published,
-
-//           submitted: true
-//         });
-//         console.log(response.data);
-//       })
-//       .catch(e => {
-//         console.log(e);
-//       });
-//   }
-
-//   newTutorial() {
-//     this.setState({
-//       id: null,
-//       title: "",
-//       description: "",
-//       published: false,
-
-//       submitted: false
-//     });
-//   }
-
-  render() {
-    // ...
-  }
+    render() {
+        // ...
+    }
 }

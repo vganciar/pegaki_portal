@@ -3,7 +3,9 @@ import { Switch, Route, Link } from 'react-router-dom';
 
 import Login from "./components/login.component";
 
-import logo from './logo.svg';
+//import Pontos from "./components/pontos.component";
+
+//import logo from './logo.svg';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
@@ -30,9 +32,15 @@ class App extends Component {
 
               <div className="container mt-3">
                   <Switch>
-                      <Route exact path={["/", "/pontos"]} component={Pontos} />
+                      <Route exact path={["/", "/login"]} component={Login} />
                   </Switch>
               </div>
+
+              {/* <div className="container mt-3">
+                  <Switch>
+                      <Route exact path={["/", "/pontos"]} component={Pontos} />
+                  </Switch>
+              </div> */}
           </div>
 
           // <div className="App">
