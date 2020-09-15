@@ -4,7 +4,7 @@ const API_URL = "https://api.pegaki.com.br/";
 
 //const CEP = "09572300";
 
-class PontosService 
+export default class PontosService
 {
     getPoints(cep) 
     {
@@ -35,5 +35,3 @@ class PontosService
         });
     }
 }
-
-export default new PonstosService();

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PontosService from "../services/pontos.service";
-import { Link } from "react-router-dom";
+
+import AuthService from "../services/auth.service";
 
 export default class Pontos extends Component {
     constructor(props) {
@@ -10,8 +11,9 @@ export default class Pontos extends Component {
         this.refreshList = this.refreshList.bind(this);
 
         this.state = {
-            cep,
-            points: []
+            cep: "",
+            points: [],
+            currentUser: AuthService.getCurrentUser()            
         }
         
         //this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -52,6 +54,16 @@ export default class Pontos extends Component {
     }
 
     render() {
-        // ...
+        const { currentUser } = this.state;
+
+        return(
+            <div className="container">
+                <header className="jumbotron">
+                    <h3>
+                        <strong>{currentUser.username}</strong> Pontos
+                    </h3>
+                </header>
+            </div>
+        );    
     }
 }
