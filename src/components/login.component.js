@@ -17,7 +17,8 @@ const required = value => {
 export default class Login extends Component {
     constructor(props) {
         super(props);
-        this.handleLogin = this.handleLogin.bind(this);
+        
+        //this.handleLogin = this.handleLogin.bind(this);
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
 
@@ -39,5 +40,20 @@ export default class Login extends Component {
         this.setState({
             password: e.target.value
         });
+    }
+
+    login() {
+        let data = {
+            username: this.state.username,
+            password: this.state.password
+        };
+
+        AuthService.login(data.username, data.password)
+        .then(response => {
+            
+        })
+        .catch( e => {
+            console.log(e);
+        })
     }
 }
