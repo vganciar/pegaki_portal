@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/auth/";
+const API_URL = "http://localhost:8080/api/";
 
 const API_URL_PEGAKI = "https://api.pegaki.com.br/";
 
@@ -12,7 +12,7 @@ class AuthService
 {
     getToken()
     {
-        return axios.post(API_URL + "authentication", {
+        return axios.post(API_URL_PEGAKI + "authentication", {
             email,
             clientSecret
         })
@@ -28,7 +28,7 @@ class AuthService
 
     login(username, password) 
     {
-        return axios.post(API_URL + "signin", {
+        return axios.post(API_URL + "user/login", {
             username,
             password
         })
@@ -49,7 +49,7 @@ class AuthService
 
     register (username, email, password) 
     {
-        return axios.post(API_URL + "signup", {
+        return axios.post(API_URL + "user/signup", {
             username,
             email,
             password
